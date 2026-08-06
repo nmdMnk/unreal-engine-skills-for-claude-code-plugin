@@ -1,6 +1,6 @@
 # Unreal Engine Skills for Claude Code
 
-Control Unreal Editor directly from Claude Code via MCP. Hundreds of tools exposed via Unreal's ToolsetRegistry across 30+ toolsets: actors, blueprints, materials, Niagara, Control Rigs, Sequencer, State Trees, widgets, Gameplay Ability System, automation testing, and more.
+Control Unreal Editor directly from Claude Code via MCP. Hundreds of tools exposed via Unreal's ToolsetRegistry across 30+ toolsets: actors, blueprints, materials, Niagara, Control Rigs, Sequencer, widgets, Gameplay Ability System, automation testing, and more.
 
 ## Contents
 
@@ -29,20 +29,22 @@ The `SessionStart` hook is a bash script (`hooks/unreal-context.sh`) invoked by 
 
 ## Installation
 
-This plugin is published in Anthropic's official Claude Code plugin marketplace, `claude-plugins-official`, which is available automatically when you start Claude Code. Browse it at [claude.com/plugins](https://claude.com/plugins) or in the **Discover** tab of the `/plugin` panel.
+This fork is published from the `experimental` branch of [nmdMnk/unreal-engine-skills-for-claude-code-plugin](https://github.com/nmdMnk/unreal-engine-skills-for-claude-code-plugin).
 
 ### Install for a single developer
 
 In Claude Code:
 
 ```
-/plugin install unreal-engine-skills-for-claude-code@claude-plugins-official
+/plugin marketplace add nmdMnk/unreal-engine-skills-for-claude-code-plugin@experimental
+/plugin install unreal-engine-skills-for-claude-code@nmd-unreal-engine-skills
 ```
 
-If the official marketplace is not present, add it first, then run the install command above:
+In Codex:
 
-```
-/plugin marketplace add anthropics/claude-plugins-official
+```bash
+codex plugin marketplace add nmdMnk/unreal-engine-skills-for-claude-code-plugin --ref experimental
+codex plugin add unreal-engine-skills-for-claude-code@nmd-unreal-engine-skills
 ```
 
 ### Install for a team
@@ -52,7 +54,7 @@ Commit this to `.claude/settings.json` in the project that should use the plugin
 ```json
 {
   "enabledPlugins": {
-    "unreal-engine-skills-for-claude-code@claude-plugins-official": true
+    "unreal-engine-skills-for-claude-code@nmd-unreal-engine-skills": true
   }
 }
 ```
@@ -61,7 +63,7 @@ Commit this to `.claude/settings.json` in the project that should use the plugin
 
 1. Launch Unreal Editor, then run `ModelContextProtocol.StartServer` in the console to start the MCP server.
 2. Check the Output Log for MCP server startup messages.
-3. In Claude Code, run `/plugin`. The **Installed** tab should list `unreal-engine-skills-for-claude-code` as enabled. This confirms the plugin itself (skills, hooks) is loaded.
+3. In Claude Code or Codex, run `/plugin`. The **Installed** tab should list `unreal-engine-skills-for-claude-code` as enabled. This confirms the plugin itself (skills, hooks) is loaded.
 4. Run `/mcp`. You should see `unreal-mcp` listed as a connected server. This confirms the plugin's MCP server is reachable.
 5. Try: "List all actors in the current level".
 
@@ -94,11 +96,11 @@ All tools are auto-discovered by Claude Code via MCP. No manual configuration ne
 - **Assets and Content** - find, load, save, move, duplicate assets; edit Data Tables, Curve Tables, String Tables
 - **Materials** - author material graphs, create and configure material instances
 - **Meshes and Textures** - inspect/edit static and skeletal meshes, LODs, collisions, Nanite, sockets, bones
-- **Animation** - build Control Rigs, inspect State Trees and Behavior Trees
+- **Animation** - build Control Rigs, inspect Behavior Trees
 - **Sequencer** - create and edit Level Sequences, keyframe animation, manage cameras, Control Rig integration, FBX import/export
-- **VFX** - author Niagara systems and Dataflow graphs
+- **VFX** - author Niagara systems
 - **UI** - build UMG widget blueprints, automate Slate UI interaction
-- **Gameplay** - manage gameplay tags, inspect GAS state, create Game Feature Plugins, edit physics assets
+- **Gameplay** - manage gameplay tags, inspect GAS state
 - **Testing** - discover, run, and inspect C++ automation tests with detailed results
 - **Editor** - screenshots, camera control, actor/asset selection, content browser, log inspection
 - **Scripting** - batch multiple tool calls into a single Python script execution

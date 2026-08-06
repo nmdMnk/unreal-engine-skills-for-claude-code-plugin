@@ -1,0 +1,29 @@
+{
+  "name": "unreal-engine-skills-for-claude-code",
+  "version": "3.0.4-experimental.1",
+  "description": "Control Unreal Editor from Codex via MCP and ToolsetRegistry.",
+  "author": {
+    "name": "Thomas Mansencal",
+    "email": "thomas.mansencal@epicgames.com",
+    "url": "https://github.com/EpicGames"
+  },
+  "homepage": "https://github.com/nmdMnk/unreal-engine-skills-for-claude-code-plugin",
+  "repository": "https://github.com/nmdMnk/unreal-engine-skills-for-claude-code-plugin",
+  "license": "MIT",
+  "keywords": ["unreal-engine", "ue5", "mcp", "toolsets"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Unreal Engine Skills",
+    "shortDescription": "Drive Unreal Editor through MCP",
+    "longDescription": "Skills and lifecycle context for Unreal Engine MCP and its ToolsetRegistry toolsets.",
+    "developerName": "Epic Games / nmdMnk",
+    "category": "Developer Tools",
+    "capabilities": ["Instructions", "Lifecycle hooks"],
+    "websiteURL": "https://github.com/nmdMnk/unreal-engine-skills-for-claude-code-plugin",
+    "defaultPrompt": [
+      "Inspect the available Unreal MCP toolsets.",
+      "Edit this Unreal Blueprint through MCP.",
+      "Inspect the current Unreal Editor state."
+    ]
+  }
+}

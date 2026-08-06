@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "nmd-unreal-engine-skills",
+  "description": "Unreal Engine MCP skills for Claude Code and Codex.",
+  "owner": {
+    "name": "nmdMnk",
+    "url": "https://github.com/nmdMnk"
+  },
+  "plugins": [
+    {
+      "name": "unreal-engine-skills-for-claude-code",
+      "description": "Drive Unreal Editor through MCP and the available toolsets.",
+      "source": "./",
+      "category": "development"
+    }
+  ]
+}

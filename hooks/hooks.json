@@ -8,6 +8,7 @@
           {
             "type": "command",
             "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/unreal-context.sh",
+            "commandWindows": "& \"$env:ProgramFiles\\Git\\bin\\bash.exe\" -c 'PATH=/usr/bin:$PATH; exec \"$1\"' _ \"$env:CLAUDE_PLUGIN_ROOT/hooks/unreal-context.sh\"",
             "timeout": 5
           }
         ]
