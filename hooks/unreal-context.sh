@@ -71,7 +71,7 @@ elif [ -n "$uproject_filename" ]; then
 fi
 context="$context Prefer Unreal Engine conventions (C++/UObject patterns, Slate, UHT reflection) when suggesting code."
 context="$context Use the \`unreal-mcp\` skill for tasks that involve driving the Unreal Editor via MCP."
-if [ -n "${CODEX_THREAD_ID:-}" ]; then
+if [ -n "${PLUGIN_ROOT:-}" ]; then
   if [ -f "$project_root/.codex/config.toml" ]; then
     context="$context A \`.codex/config.toml\` is already present at the project root."
   else

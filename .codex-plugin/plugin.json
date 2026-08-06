@@ -1,6 +1,6 @@
 {
   "name": "unreal-engine-skills-for-claude-code",
-  "version": "3.0.4-experimental.2",
+  "version": "3.0.4-experimental.3",
   "description": "Control Unreal Editor from Codex via MCP and ToolsetRegistry.",
   "author": {
     "name": "Thomas Mansencal",
