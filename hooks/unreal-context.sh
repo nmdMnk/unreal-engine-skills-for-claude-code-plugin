@@ -71,7 +71,13 @@ elif [ -n "$uproject_filename" ]; then
 fi
 context="$context Prefer Unreal Engine conventions (C++/UObject patterns, Slate, UHT reflection) when suggesting code."
 context="$context Use the \`unreal-mcp\` skill for tasks that involve driving the Unreal Editor via MCP."
-if [ "$mcp_config_present" = "true" ]; then
+if [ -n "${CODEX_THREAD_ID:-}" ]; then
+  if [ -f "$project_root/.codex/config.toml" ]; then
+    context="$context A \`.codex/config.toml\` is already present at the project root."
+  else
+    context="$context No \`.codex/config.toml\` is present at the project root yet. Run \`ModelContextProtocol.GenerateClientConfig Codex\` in the editor console to generate one."
+  fi
+elif [ "$mcp_config_present" = "true" ]; then
   context="$context An \`.mcp.json\` is already present at the project root."
 else
   context="$context No \`.mcp.json\` is present at the project root yet. Run \`ModelContextProtocol.GenerateClientConfig ClaudeCode\` in the editor console to generate one."
