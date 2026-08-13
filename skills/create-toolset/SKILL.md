@@ -231,7 +231,7 @@ TArray<UMyThing*> UMyToolset::FindThings(const FString& NamePattern)
 
 ### Tests
 
-Before running tests, compile your changes with `LiveCodingToolset.CompileLiveCoding`. It blocks until done and surfaces MSVC diagnostics. Fix any compile errors before proceeding.
+Before running tests, compile your changes with `LiveCodingToolset.CompileLiveCoding` as the reliable fast path for implementation-only changes in existing `.cpp` files, including non-exported file-local helpers. Object Reinstancing can technically compile broader structural changes, but a new or changed tool declaration, parameter, return type, reflected type, header, constructor/default, module dependency, or C++ file requires the project's normal full build and editor restart before final validation. Treat a Live Coding `Success` that warns about `data type changes` as provisional. It blocks until done and surfaces MSVC diagnostics. Fix any compile errors before proceeding.
 
 Every tool needs test coverage for both the success path and every error path. Write at least one test that confirms the tool does what it says, and a separate test for each condition that raises. Use the `BEGIN_DEFINE_SPEC` / `END_DEFINE_SPEC` pattern. Read existing tests in `Plugins/Experimental/Toolsets` for reference. Place tests near the toolset and follow the convention in the same plugin:
 
@@ -383,7 +383,7 @@ Tests are how you verify the toolset actually works and catch regressions when t
 
 ### Live Editor (preferred)
 
-Running tests against a live editor instance using `unreal-mcp` is the fastest way to iterate. Changes can be compiled or hot-reloaded without restarting, and results come back immediately. This flow works for both C++ and Python tests.
+Running tests against a live editor instance using `unreal-mcp` is the fastest way to iterate. Changes can be compiled or hot-reloaded without restarting, and results come back immediately. This flow works for both C++ and Python tests; use Live Coding for implementation-only changes in existing `.cpp` files. C++ header, reflection, ABI/layout, or initialization changes require a full build and editor restart before final validation.
 
 Run tests via MCP:
 
