@@ -79,10 +79,11 @@ Skills register themselves on import. Unless directed otherwise, place skill fil
 
 ### Reloading
 
-After editing a Python skill, reload the plugin's package before verifying. The editor won't pick up changes otherwise. Enable Remote Execution in **Edit → Project Settings → Plugins → Python → Enable Remote Execution**, then run:
+After editing a Python skill, reload the plugin's package before verifying. The editor won't pick up changes otherwise. Execute this in the Editor's Python Console or through Python Remote Execution:
 
-```bash
-python Plugins/Experimental/ToolsetRegistry/Content/Python/toolset_registry/tests/reload_remote.py your_plugin
+```python
+import your_plugin, toolset_registry
+toolset_registry.reload_module(your_plugin)
 ```
 
 ## UAsset Skills
